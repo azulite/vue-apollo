@@ -3,12 +3,6 @@ import { VUE_APOLLO_QUERY_KEYWORDS } from './consts'
 import { getMergedDefinition } from './utils'
 
 export class ApolloProvider {
-  clients
-  defaultClient
-  defaultOptions
-  watchLoading
-  errorHandler
-  prefetchQueries = []
   constructor (options) {
     if (!options) {
       throw new Error('Options argument required')

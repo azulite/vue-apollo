@@ -41,7 +41,7 @@ interface ApolloVueSubscribeToMoreOptions<V> {
 }
 
 type _WatchQueryOptions = Omit<WatchQueryOptions, 'query'>; // exclude query prop because it causes type incorrectly error
-export interface VueApolloQueryOptions<V, R> extends _WatchQueryOptions { 
+export interface VueApolloQueryOptions<V, R> extends _WatchQueryOptions {
   query: ((this: ApolloVueThisType<V>) => DocumentNode) | DocumentNode;
   variables?: VariableFn<V>;
   update?: (this: ApolloVueThisType<V>, data: R) => any;
@@ -71,6 +71,7 @@ type Mutate<V, R=any> = <R=any>(params: VueApolloMutationOptions<V, R>) => Promi
 type Subscribe<R=any> = <R=any>(params: SubscriptionOptions) => ObservableQuery<R>;
 export interface ApolloProperty<V> {
   [key: string]: Query<V> | Mutate<V> | Subscribe; // smart query
+  provider: any;
   queries: any;
   mutate: Mutate<V>;
   subscribe: Subscribe;
